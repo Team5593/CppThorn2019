@@ -10,5 +10,6 @@
 #include <WPILib.h>
 
 OI::OI() {
-
+    controller.SetYChannel(1);
+    controller.SetTwistChannel(4);
 }

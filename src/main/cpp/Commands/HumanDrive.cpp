@@ -16,7 +16,7 @@ HumanDrive::HumanDrive() {
 void HumanDrive::Initialize() {}
 
 void HumanDrive::Execute() {
-  double throttle = Robot::oi.controller.GetThrottle();
+  double throttle = Robot::oi.controller.GetY();
   double twist    = Robot::oi.controller.GetTwist();
 
   Robot::drive_train.GetDriveSystem()->ArcadeDrive(throttle, twist);
