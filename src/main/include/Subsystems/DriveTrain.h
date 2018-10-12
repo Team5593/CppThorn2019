@@ -9,6 +9,7 @@
 
 #include <Commands/Subsystem.h>
 #include <ADXRS450_Gyro.h>
+#include <BuiltInAccelerometer.h>
 #include <PWMTalonSRX.h>
 #include <Drive/DifferentialDrive.h>
 #include "Commands/HumanDrive.h"
@@ -17,6 +18,7 @@ class DriveTrain : public frc::Subsystem {
  private:
   // Sensors
   ADXRS450_Gyro gyro;
+  BuiltInAccelerometer accelerometer;
 
   // Motor Controllers
   PWMTalonSRX talon_motor_left {0};
