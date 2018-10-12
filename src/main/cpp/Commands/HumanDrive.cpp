@@ -5,16 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "Commands/HumanDrive.h"
 
-#include <Commands/Command.h>
+#include "Robot.h"
 
-class ExampleCommand : public frc::Command {
- public:
-  ExampleCommand();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
-};
+HumanDrive::HumanDrive() {
+  Requires(&Robot::drive_train);
+}
+
+void HumanDrive::Initialize() {}
+
+void HumanDrive::Execute() {
+  double throttle = Robot::oi.controller.GetThrottle();
+  double twist    = Robot::oi.controller.GetTwist();
+
+  Robot::drive_train.GetDriveSystem()->ArcadeDrive(throttle, twist);
+}
+
+bool HumanDrive::IsFinished() { return false; }
+
+void HumanDrive::End() {}
+
+void HumanDrive::Interrupted() {}

@@ -5,16 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Subsystems/ExampleSubsystem.h"
+#include "Subsystems/DriveTrain.h"
 
-#include "RobotMap.h"
+DriveTrain::DriveTrain() : Subsystem("DriveTrain") {}
 
-ExampleSubsystem::ExampleSubsystem() : frc::Subsystem("ExampleSubsystem") {}
-
-void ExampleSubsystem::InitDefaultCommand() {
+void DriveTrain::InitDefaultCommand() {
   // Set the default command for a subsystem here.
-  // SetDefaultCommand(new MySpecialCommand());
+  SetDefaultCommand(new HumanDrive());
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+DifferentialDrive * DriveTrain::GetDriveSystem() {
+  return &drive_system;
+}

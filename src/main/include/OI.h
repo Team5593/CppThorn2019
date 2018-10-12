@@ -7,7 +7,11 @@
 
 #pragma once
 
+#include <Joystick.h>
+
 class OI {
  public:
   OI();
+
+  Joystick controller {0};
 };

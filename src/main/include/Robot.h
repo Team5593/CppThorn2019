@@ -11,15 +11,14 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <TimedRobot.h>
 
-#include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 #include "OI.h"
-#include "Subsystems/ExampleSubsystem.h"
+#include "Subsystems/DriveTrain.h"
 
 class Robot : public frc::TimedRobot {
  public:
-  static ExampleSubsystem m_subsystem;
-  static OI m_oi;
+  static DriveTrain drive_train;
+  static OI oi;
 
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -33,7 +32,6 @@ class Robot : public frc::TimedRobot {
 
  private:
   frc::Command* m_autonomousCommand = nullptr;
-  ExampleCommand m_defaultAuto;
   MyAutoCommand m_myAuto;
   frc::SendableChooser<frc::Command*> m_chooser;
 };
