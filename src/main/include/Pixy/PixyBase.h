@@ -2,6 +2,7 @@
 
 #include <inttypes.h>
 #include <vector>
+#include <array>
 
 class PixyBase {
 public:

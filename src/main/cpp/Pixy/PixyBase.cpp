@@ -16,6 +16,27 @@ std::vector<PixyBase::Block> PixyBase::GetBlocks(uint16_t max_blocks) {
     }
 }
 
+void PixyBase::SetServos(uint16_t servo_0, uint16_t  servo_1) {
+    union servo {
+        uint16_t word;
+        uint8_t byte[2];
+    };
+
+    servo value_0 = {.word = servo_0};
+    servo value_1 = {.word = servo_1};
+
+    std::array<uint8_t, 6> output = {
+        0x00,
+        0xFF,
+        value_0.byte[0],
+        value_0.byte[1],
+        value_1.byte[0],
+        value_1.byte[1]
+    };
+
+    Write(output.data(), output.size());
+}
+
 PixyBase::BlockType PixyBase::WaitForStartWord() {
     uint16_t word, last_word;
     last_word = 0xFFFF;
