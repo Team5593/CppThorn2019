@@ -4,6 +4,8 @@
 #include <vector>
 #include <array>
 
+#include <iostream>
+
 class PixyBase {
 public:
 	static constexpr uint16_t kMinX = 0;
@@ -15,8 +17,9 @@ public:
 	static constexpr uint16_t kMaxSignature = 7;
 
 	enum BlockType {
-		NORMAL_BLOCK,
-		COLOR_CODE_BLOCK
+		NO_BLOCK = -1,
+		NORMAL_BLOCK = 0,
+		COLOR_CODE_BLOCK = 1
 	};
 
 	struct Block {

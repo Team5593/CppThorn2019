@@ -4,6 +4,11 @@ std::vector<PixyBase::Block> PixyBase::GetBlocks(uint16_t max_blocks) {
     std::vector<Block> blocks;
     for (uint16_t block_iter = 0; block_iter < max_blocks; block_iter++) {
         BlockType type = WaitForStartWord();
+
+        if (type == NO_BLOCK) {
+            break;
+        }
+
         uint16_t checksum = GetWord();
 
         const uint16_t words_per_block = sizeof(Block)/sizeof(uint16_t);
@@ -79,7 +84,10 @@ PixyBase::BlockType PixyBase::WaitForStartWord() {
     while (true) {
         word = GetWord();
 
-        if (last_word == kStartWord) {
+        if (word == 0 and last_word == 0) {
+            return NO_BLOCK;
+        }
+        else if (last_word == kStartWord) {
             switch (word) {
                 case kStartWord: return NORMAL_BLOCK;
                 case kStartWordCC: return COLOR_CODE_BLOCK;
