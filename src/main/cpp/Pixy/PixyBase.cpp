@@ -2,18 +2,41 @@
 
 std::vector<PixyBase::Block> PixyBase::GetBlocks(uint16_t max_blocks) {
     std::vector<Block> blocks;
-    for (uint16_t i = 0; i < max_blocks; i++) {
-        BlockType type;
-        uint16_t data = GetWord();
+    for (uint16_t block_iter = 0; block_iter < max_blocks; block_iter++) {
+        BlockType type = WaitForStartWord();
+        uint16_t checksum = GetWord();
 
-        switch (data) {
-            case kStartWord: type = NORMAL_BLOCK;
-            case kStartWordCC: type = COLOR_CODE_BLOCK;
-            case 0: continue; // no data
+        const uint16_t words_per_block = sizeof(Block)/sizeof(uint16_t);
+
+        union BlockData {
+            Block block;
+            uint16_t data[words_per_block];
+        };
+
+        BlockData block;
+        uint16_t sum;
+
+        for (uint16_t data_iter = 0; data_iter < words_per_block; data_iter++) {
+            if (type == NORMAL_BLOCK and data_iter >= 5) {
+                // skip last word. normal blocks are one word shorter than cc blocks
+                block.block.angle = 0;
+                break;
+            }
+
+            auto word = GetWord();
+            block.data[data_iter] = word;
+            sum += word;
         }
 
-        
+        if (sum == checksum) {
+            blocks.push_back(block.block);
+        }
+        else {
+            continue;
+        }
     }
+
+    return blocks;
 }
 
 void PixyBase::SetServos(uint16_t servo_0, uint16_t  servo_1) {
