@@ -37,6 +37,18 @@ void PixyBase::SetServos(uint16_t servo_0, uint16_t  servo_1) {
     Write(output.data(), output.size());
 }
 
+void PixyBase::SetRGBLed(uint8_t red, uint8_t green, uint8_t blue) {
+    std::array<uint8_t, 5> output = {
+        0x00,
+        0xfd,
+        red,
+        green,
+        blue
+    };
+
+    Write(output.data(), output.size());
+}
+
 PixyBase::BlockType PixyBase::WaitForStartWord() {
     uint16_t word, last_word;
     last_word = 0xFFFF;
