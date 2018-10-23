@@ -14,7 +14,7 @@ uint16_t PixyI2C::GetWord() {
 
     // todo: add interface error handler
 
-    return (buffer[2] << 8) | (buffer[1]);
+    return (buffer[1] << 8) | (buffer[0]);
 }
 
 uint8_t PixyI2C::GetByte() {
@@ -24,7 +24,7 @@ uint8_t PixyI2C::GetByte() {
 
     // todo: add interface error handler
 
-    return (buffer[1]);
+    return (buffer[0]);
 }
 
 void PixyI2C::Write(uint8_t *data, uint8_t length) {
