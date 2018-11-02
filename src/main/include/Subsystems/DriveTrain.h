@@ -32,4 +32,6 @@ class DriveTrain : public frc::Subsystem {
   void InitDefaultCommand() override;
 
   DifferentialDrive * GetDriveSystem();
+
+  Accelerometer * GetAccelerometer();
 };

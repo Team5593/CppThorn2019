@@ -17,3 +17,7 @@ void DriveTrain::InitDefaultCommand() {
 DifferentialDrive * DriveTrain::GetDriveSystem() {
   return &drive_system;
 }
+
+Accelerometer * DriveTrain::GetAccelerometer() {
+  return  &accelerometer;
+}
