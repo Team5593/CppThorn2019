@@ -9,6 +9,7 @@
 
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include <CameraServer.h>
 
 ExampleSubsystem Robot::m_subsystem;
 OI Robot::m_oi;
@@ -17,6 +18,7 @@ void Robot::RobotInit() {
   m_chooser.AddDefault("Default Auto", &m_defaultAuto);
   m_chooser.AddObject("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  CameraServer::GetInstance()->StartAutomaticCapture();
 }
 
 void Robot::RobotPeriodic() {}
