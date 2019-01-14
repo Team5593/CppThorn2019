@@ -5,27 +5,32 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/ExampleCommand.h"
+#include "Commands/HumanDriver.h"
 
-#include "Robot.h"
-
-ExampleCommand::ExampleCommand() {
+HumanDriver::HumanDriver() {
   // Use Requires() here to declare subsystem dependencies
-  Requires(&Robot::m_subsystem);
+  Requires (&Robot::driveTrain);
 }
 
 // Called just before this Command runs the first time
-void ExampleCommand::Initialize() {}
+void HumanDriver::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void ExampleCommand::Execute() {}
+void HumanDriver::Execute() 
+{
+  const double BASE_SPEED = 0.75;
+  auto forwards = controller.GetRawAxis(1);
+  auto heading = controller.GetRawAxis(4);
+  auto throttle = BASE_SPEED + (controller.GetRawAxis(3) * (1-BASE_SPEED));
+  Robot::driveTrain.arcadeDrive(forwards * throttle, heading * throttle);
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool ExampleCommand::IsFinished() { return false; }
+bool HumanDriver::IsFinished() { return false; }
 
 // Called once after isFinished returns true
-void ExampleCommand::End() {}
+void HumanDriver::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ExampleCommand::Interrupted() {}
+void HumanDriver::Interrupted() {}

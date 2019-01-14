@@ -5,16 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Subsystems/ExampleSubsystem.h"
+#pragma once
 
-#include "RobotMap.h"
+#include <Commands/Command.h>
+#include "../Robot.h"
 
-ExampleSubsystem::ExampleSubsystem() : frc::Subsystem("ExampleSubsystem") {}
-
-void ExampleSubsystem::InitDefaultCommand() {
-  // Set the default command for a subsystem here.
-  // SetDefaultCommand(new MySpecialCommand());
-}
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+class HumanDriver : public frc::Command {
+ public:
+  HumanDriver();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+ private:
+  XboxController& controller = Robot::m_oi.GetController();
+};
