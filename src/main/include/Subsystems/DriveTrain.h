@@ -7,14 +7,22 @@
 
 #pragma once
 
-#include <Commands/Command.h>
+#include <Commands/Subsystem.h>
 
-class ExampleCommand : public frc::Command {
+#include <PWMVictorSPX.h>
+#include <Drive/DifferentialDrive.h>
+
+class DriveTrain : public frc::Subsystem {
+ private:
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
+
  public:
-  ExampleCommand();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+  DriveTrain();
+  void InitDefaultCommand() override;
+  void arcadeDrive(double move, double angle);
+ private:
+  PWMVictorSPX motorLeft{0};
+  PWMVictorSPX motorRight{1};
+  DifferentialDrive driveTrain {motorLeft, motorRight};
 };

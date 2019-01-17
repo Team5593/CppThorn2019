@@ -7,16 +7,13 @@
 
 #include "Robot.h"
 
-#include <Commands/Scheduler.h>
-#include <SmartDashboard/SmartDashboard.h>
+#include <CameraServer.h>
 
-ExampleSubsystem Robot::m_subsystem;
+DriveTrain Robot::driveTrain;
 OI Robot::m_oi;
 
 void Robot::RobotInit() {
-  m_chooser.AddDefault("Default Auto", &m_defaultAuto);
-  m_chooser.AddObject("My Auto", &m_myAuto);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  CameraServer::GetInstance()->StartAutomaticCapture();
 }
 
 void Robot::RobotPeriodic() {}
@@ -25,31 +22,11 @@ void Robot::DisabledInit() {}
 
 void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-void Robot::AutonomousInit() {
-  // std::string autoSelected = frc::SmartDashboard::GetString(
-  //     "Auto Selector", "Default");
-  // if (autoSelected == "My Auto") {
-  //   m_autonomousCommand = &m_myAuto;
-  // } else {
-  //   m_autonomousCommand = &m_defaultAuto;
-  // }
-
-  m_autonomousCommand = m_chooser.GetSelected();
-
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Start();
-  }
-}
+void Robot::AutonomousInit() {}
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-void Robot::TeleopInit() {
-  // Cancel auto command if it's running.
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Cancel();
-    m_autonomousCommand = nullptr;
-  }
-}
+void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 

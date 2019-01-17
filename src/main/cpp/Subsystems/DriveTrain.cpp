@@ -5,16 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "Subsystems/DriveTrain.h"
+#include "Commands/HumanDriver.h"
 
-#include <Commands/Subsystem.h>
+DriveTrain::DriveTrain() : Subsystem("DriveTrain") {}
 
-class ExampleSubsystem : public frc::Subsystem {
- public:
-  ExampleSubsystem();
-  void InitDefaultCommand() override;
+void DriveTrain::InitDefaultCommand() {
+  // Set the default command for a subsystem here.
+  SetDefaultCommand(new HumanDriver());
+}
 
- private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
-};
+void DriveTrain::arcadeDrive(double move, double angle)
+{
+  driveTrain.ArcadeDrive(move, angle);
+}
+
+// Put methods for controlling this subsystem
+// here. Call these from Commands.
