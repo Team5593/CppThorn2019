@@ -3,6 +3,7 @@
 #include <CameraServer.h>
 
 DriveTrain Robot::driveTrain;
+HatchPanelSubsystem Robot::hatchPanelSubsystem;
 OI Robot::m_oi;
 
 void Robot::RobotInit() {

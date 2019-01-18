@@ -7,10 +7,12 @@
 
 #include "OI.h"
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/HatchPanelSubsystem.h"
 
 class Robot : public frc::TimedRobot {
  public:
   static DriveTrain driveTrain;
+  static HatchPanelSubsystem hatchPanelSubsystem;
   static OI m_oi;
 
   void RobotInit() override;
