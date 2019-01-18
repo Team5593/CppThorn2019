@@ -5,9 +5,9 @@
 #include <PWMVictorSPX.h>
 #include <Drive/DifferentialDrive.h>
 
-class DriveTrain : public frc::Subsystem {
+class DriveTrainSubsystem : public frc::Subsystem {
  public:
-  DriveTrain();
+  DriveTrainSubsystem();
   void InitDefaultCommand() override;
   void arcadeDrive(double move, double angle);
  private:

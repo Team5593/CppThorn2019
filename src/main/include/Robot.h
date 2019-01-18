@@ -6,12 +6,12 @@
 #include <Commands/Scheduler.h>
 
 #include "OI.h"
-#include "Subsystems/DriveTrain.h"
+#include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/HatchPanelSubsystem.h"
 
 class Robot : public frc::TimedRobot {
  public:
-  static DriveTrain driveTrain;
+  static DriveTrainSubsystem driveTrainSubsystem;
   static HatchPanelSubsystem hatchPanelSubsystem;
   static OI m_oi;
 

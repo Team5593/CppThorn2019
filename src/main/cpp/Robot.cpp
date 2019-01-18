@@ -2,7 +2,7 @@
 
 #include <CameraServer.h>
 
-DriveTrain Robot::driveTrain;
+DriveTrainSubsystem Robot::driveTrainSubsystem;
 HatchPanelSubsystem Robot::hatchPanelSubsystem;
 OI Robot::m_oi;
 

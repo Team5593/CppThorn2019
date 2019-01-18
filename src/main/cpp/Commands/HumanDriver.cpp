@@ -1,7 +1,7 @@
 #include "Commands/HumanDriver.h"
 
 HumanDriver::HumanDriver() {
-  Requires (&Robot::driveTrain);
+  Requires (&Robot::driveTrainSubsystem);
 }
 
 void HumanDriver::Initialize() {}
@@ -12,7 +12,7 @@ void HumanDriver::Execute()
   auto forwards = controller.GetRawAxis(1);
   auto heading = controller.GetRawAxis(4);
   auto throttle = BASE_SPEED + (controller.GetRawAxis(3) * (1-BASE_SPEED));
-  Robot::driveTrain.arcadeDrive(forwards * throttle, heading * throttle);
+  Robot::driveTrainSubsystem.arcadeDrive(forwards * throttle, heading * throttle);
 }
 
 bool HumanDriver::IsFinished() { return false; }
