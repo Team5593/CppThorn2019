@@ -9,28 +9,9 @@
 
 #include <WPILib.h>
 
-OI::OI() 
-{
-  // Process operator interface input here.
-
-}
-
-/*double OI::getY()
-{
-  return joystick.GetRawAxis(1);
-}
-
-double OI::getX()
-{
-  return joystick.GetRawAxis(4);
-}
-
-bool OI::getTrigger()
-{
-  return (joystick.GetRawAxis(3)>0.9);
-}*/
+OI::OI() {}
 
 XboxController& OI::GetController()
-  {
+{
   return controller;
-  }
+}

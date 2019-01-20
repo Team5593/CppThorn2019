@@ -11,9 +11,6 @@ Desc: Mapping and configuration of controllers
 class OI {
  public:
   OI();
-  double getY();
-  double getX();
-  bool getTrigger();
 
   XboxController& GetController();
  private:
