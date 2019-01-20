@@ -9,7 +9,9 @@
 
 #include <WPILib.h>
 
-OI::OI() {}
+OI::OI() {
+	// button_a.WhenPressed(new Command());
+}
 
 XboxController& OI::GetController()
 {
