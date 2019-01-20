@@ -1,3 +1,8 @@
+/*
+Title: Hatch Panel Subsystem
+Desc: A subsystem for control of the hatch panel mechanism
+*/
+
 #pragma once
 
 #include <Commands/Subsystem.h>

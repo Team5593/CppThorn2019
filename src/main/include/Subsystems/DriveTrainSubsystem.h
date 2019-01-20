@@ -1,3 +1,8 @@
+/*
+Title: Drive Train Subsystem
+Description: A subsystem for control of the robot platform.
+*/
+
 #pragma once
 
 #include <Commands/Subsystem.h>

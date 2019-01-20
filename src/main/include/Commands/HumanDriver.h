@@ -1,3 +1,8 @@
+/*
+Title: Human Driver
+Description: Allows the driver to control the drive-train of the robot.
+*/
+
 #pragma once
 
 #include <Commands/Command.h>
