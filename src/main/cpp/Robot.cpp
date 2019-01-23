@@ -23,7 +23,10 @@ void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 void Robot::TeleopInit() {}
 
-void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::TeleopPeriodic() { 
+  frc::Scheduler::GetInstance()->Run(); 
+  std::cout << driveTrainSubsystem.ultrasonic.GetRangeMM() << std::endl;
+}
 
 void Robot::TestPeriodic() {}
 

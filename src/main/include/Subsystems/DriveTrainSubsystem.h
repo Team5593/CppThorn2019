@@ -7,7 +7,7 @@ Description: A subsystem for control of the robot platform.
 
 #include <Commands/Subsystem.h>
 #include "Pixy/PixyI2C.h"
-
+#include <Ultrasonic.h>
 #include <PWMVictorSPX.h>
 #include <Drive/DifferentialDrive.h>
 
@@ -16,7 +16,7 @@ class DriveTrainSubsystem : public frc::Subsystem {
   DriveTrainSubsystem();
   void InitDefaultCommand() override;
   void arcadeDrive(double move, double angle);
-
+  Ultrasonic ultrasonic {0, 1};
   PixyI2C pixy {frc::I2C::kOnboard, 0x54};
  private:
   PWMVictorSPX motorLeft{0};

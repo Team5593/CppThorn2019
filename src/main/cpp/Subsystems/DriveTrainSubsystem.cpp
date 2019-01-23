@@ -4,6 +4,7 @@
 DriveTrainSubsystem::DriveTrainSubsystem() : Subsystem("DriveTrainSubsystem") {
   motorLeft.SetInverted(true);
   motorRight.SetInverted(true);
+  ultrasonic.SetAutomaticMode(true);
 }
 
 void DriveTrainSubsystem::InitDefaultCommand() {
