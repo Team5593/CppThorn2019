@@ -2,8 +2,10 @@
 
 #include <WPILib.h>
 
+#include "Commands/HatchPanel.h"
+
 OI::OI() {
-	// button_a.WhenPressed(new Command());
+	button_a.WhenPressed(new HatchPanel());
 }
 
 XboxController& OI::GetController()
