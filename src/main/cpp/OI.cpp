@@ -13,6 +13,7 @@ OI::OI() {
   dispenseHatchPanel.AddSequential(new Move(0.5, -0.5));
   dispenseHatchPanel.AddSequential(new HatchPanel());
   button_a.WhileHeld(&dispenseHatchPanel);
+  button_b.WhenPressed(new HatchPanel());
 }
 
 
