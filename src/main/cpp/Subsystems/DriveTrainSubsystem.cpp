@@ -1,7 +1,10 @@
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Commands/HumanDriver.h"
 
-DriveTrainSubsystem::DriveTrainSubsystem() : Subsystem("DriveTrainSubsystem") {}
+DriveTrainSubsystem::DriveTrainSubsystem() : Subsystem("DriveTrainSubsystem") {
+  motorLeft.SetInverted(true);
+  motorRight.SetInverted(true);
+}
 
 void DriveTrainSubsystem::InitDefaultCommand() {
   SetDefaultCommand(new HumanDriver());
