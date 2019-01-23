@@ -1,6 +1,7 @@
 #include "Robot.h"
 
 #include <CameraServer.h>
+#include <iostream>
 
 DriveTrainSubsystem Robot::driveTrainSubsystem;
 HatchPanelSubsystem Robot::hatchPanelSubsystem;

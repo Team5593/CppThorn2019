@@ -6,6 +6,7 @@ Description: A subsystem for control of the robot platform.
 #pragma once
 
 #include <Commands/Subsystem.h>
+#include "Pixy/PixyI2C.h"
 
 #include <PWMVictorSPX.h>
 #include <Drive/DifferentialDrive.h>
@@ -15,8 +16,11 @@ class DriveTrainSubsystem : public frc::Subsystem {
   DriveTrainSubsystem();
   void InitDefaultCommand() override;
   void arcadeDrive(double move, double angle);
+
+  PixyI2C pixy {frc::I2C::kOnboard, 0x54};
  private:
   PWMVictorSPX motorLeft{0};
   PWMVictorSPX motorRight{1};
   DifferentialDrive driveTrain {motorLeft, motorRight};
+  
 };
