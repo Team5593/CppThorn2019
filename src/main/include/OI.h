@@ -7,6 +7,7 @@ Desc: Mapping and configuration of controllers
 
 #include <XboxController.h>
 #include <Buttons/JoystickButton.h>
+#include <Commands/CommandGroup.h>
 
 class OI {
  public:
@@ -22,4 +23,6 @@ class OI {
   JoystickButton button_y{&controller, 4};
   JoystickButton button_start{&controller, 8};
   JoystickButton button_select{&controller, 7};
+
+  CommandGroup dispenseHatchPanel;
 };

@@ -6,8 +6,13 @@
 #include "Commands/Move.h"
 
 OI::OI() {
-	button_a.WhenPressed(new HatchPanel());
-  button_b.WhenPressed(new Move(0.3, 0.4));
+  
+  dispenseHatchPanel.AddSequential(new Move(1.3, 0.5));
+  dispenseHatchPanel.AddSequential(new HatchPanel());
+  dispenseHatchPanel.AddSequential(new Move(0.5, 0));
+  dispenseHatchPanel.AddSequential(new Move(0.5, -0.5));
+  dispenseHatchPanel.AddSequential(new HatchPanel());
+	button_a.WhenPressed(&dispenseHatchPanel);
 }
 
 XboxController& OI::GetController()
