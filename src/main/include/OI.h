@@ -25,4 +25,5 @@ class OI {
   JoystickButton button_select{&controller, 7};
 
   CommandGroup dispenseHatchPanel;
+  CommandGroup pitchHatch;
 };
